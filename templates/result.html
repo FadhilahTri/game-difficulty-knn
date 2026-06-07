@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="card p-5 text-center">
+
+                <!-- Icon hasil -->
+                <div style="font-size:5rem; filter: drop-shadow(0 0 20px #00d4ff);">
+                    {{ icon }}
+                </div>
+
+                <h6 class="section-title mt-4" style="justify-content:center;">HASIL ANALISIS KNN</h6>
+
+                <!-- Badge hasil -->
+                <div class="my-3">
+                    {% if color == 'success' %}
+                    <span class="badge fs-4 px-5 py-3 rounded-pill"
+                        style="background:linear-gradient(135deg,#00c851,#007a33); box-shadow:0 0 30px #00c85166;">
+                        🏆 HIGH ENGAGEMENT
+                    </span>
+                    {% elif color == 'warning' %}
+                    <span class="badge fs-4 px-5 py-3 rounded-pill"
+                        style="background:linear-gradient(135deg,#ffbb33,#ff8800); box-shadow:0 0 30px #ffbb3366; color:#000;">
+                        🎮 MEDIUM ENGAGEMENT
+                    </span>
+                    {% else %}
+                    <span class="badge fs-4 px-5 py-3 rounded-pill"
+                        style="background:linear-gradient(135deg,#ff4444,#cc0000); box-shadow:0 0 30px #ff444466;">
+                        😴 LOW ENGAGEMENT
+                    </span>
+                    {% endif %}
+                </div>
+
+                <p class="mt-3" style="color:#aaa; font-size:1.1rem; letter-spacing:1px;">
+                    {{ description }}
+                </p>
+
+                <div class="glow-line"></div>
+
+                <!-- Data input summary -->
+                <h6 class="section-title">📊 RINGKASAN DATA INPUT</h6>
+                <div class="row g-2 text-center mb-4">
+                    <div class="col-4">
+                        <div class="stat-badge">
+                            <div class="num" style="font-size:1.1rem;">{{ input_data.age }}</div>
+                            <div class="lbl">USIA</div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="stat-badge">
+                            <div class="num" style="font-size:1.1rem;">{{ input_data.playtime }}</div>
+                            <div class="lbl">JAM/MINGGU</div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="stat-badge">
+                            <div class="num" style="font-size:1.1rem;">{{ input_data.player_level }}</div>
+                            <div class="lbl">LEVEL</div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="stat-badge">
+                            <div class="num" style="font-size:1.1rem;">{{ input_data.sessions_per_week }}</div>
+                            <div class="lbl">SESI/MINGGU</div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="stat-badge">
+                            <div class="num" style="font-size:1.1rem;">{{ input_data.achievements }}</div>
+                            <div class="lbl">ACHIEVEMENT</div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="stat-badge">
+                            <div class="num" style="font-size:1.1rem;">{{ input_data.game_genre }}</div>
+                            <div class="lbl">GENRE</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <a href="/" class="btn btn-primary">🔄 PREDIKSI LAGI</a>
+                    <a href="/about" class="btn btn-outline-secondary">📖 TENTANG MODEL</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

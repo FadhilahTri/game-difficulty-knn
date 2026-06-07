@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5">
+
+    <!-- Hero Section -->
+    <div class="text-center mb-5">
+        <div class="mb-3" style="font-size:3rem;">🎮</div>
+        <h1 class="hero-title mb-3">GAME ENGAGEMENT<br>CLASSIFIER</h1>
+        <p class="hero-subtitle">Prediksi tingkat keterlibatan pemain game menggunakan<br>Algoritma K-Nearest Neighbors (KNN)</p>
+        <div class="glow-line mt-4"></div>
+
+        <!-- Stats -->
+        <div class="row justify-content-center g-3 mt-2">
+            <div class="col-auto">
+                <div class="stat-badge">
+                    <div class="num">80.65%</div>
+                    <div class="lbl">AKURASI MODEL</div>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="stat-badge">
+                    <div class="num">K = 18</div>
+                    <div class="lbl">K OPTIMAL</div>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="stat-badge">
+                    <div class="num">40K+</div>
+                    <div class="lbl">DATA TRAINING</div>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="stat-badge">
+                    <div class="num">3</div>
+                    <div class="lbl">KELAS OUTPUT</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Card -->
+    <div class="row justify-content-center">
+        <div class="col-lg-9">
+            <div class="card p-4 p-md-5">
+                <h5 class="section-title">📋 Input Data Pemain</h5>
+                <form action="/predict" method="POST">
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Usia Pemain</label>
+                            <input type="number" name="age" class="form-control" placeholder="Contoh: 22" min="10" max="60" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Jenis Kelamin</label>
+                            <select name="gender" class="form-select" required>
+                                <option value="">-- Pilih --</option>
+                                <option value="Male">Laki-laki</option>
+                                <option value="Female">Perempuan</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Lokasi</label>
+                            <select name="location" class="form-select" required>
+                                <option value="">-- Pilih --</option>
+                                <option value="USA">USA</option>
+                                <option value="Europe">Europe</option>
+                                <option value="Asia">Asia</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Genre Game</label>
+                            <select name="game_genre" class="form-select" required>
+                                <option value="">-- Pilih --</option>
+                                <option value="Action">Action</option>
+                                <option value="RPG">RPG</option>
+                                <option value="Strategy">Strategy</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Simulation">Simulation</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Total Jam Main / Minggu</label>
+                            <input type="number" name="playtime" class="form-control" placeholder="Contoh: 15" step="0.1" min="0" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Pembelian In-Game</label>
+                            <select name="in_game_purchases" class="form-select" required>
+                                <option value="">-- Pilih --</option>
+                                <option value="0">Tidak Pernah</option>
+                                <option value="1">Pernah Beli</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Tingkat Kesulitan Game</label>
+                            <select name="game_difficulty" class="form-select" required>
+                                <option value="">-- Pilih --</option>
+                                <option value="Easy">Easy</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Hard">Hard</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Sesi Main / Minggu</label>
+                            <input type="number" name="sessions_per_week" class="form-control" placeholder="Contoh: 5" step="0.1" min="0" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Rata-rata Durasi Sesi (menit)</label>
+                            <input type="number" name="avg_session" class="form-control" placeholder="Contoh: 60" step="0.1" min="0" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Level Pemain</label>
+                            <input type="number" name="player_level" class="form-control" placeholder="Contoh: 25" min="1" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Achievement Terbuka</label>
+                            <input type="number" name="achievements" class="form-control" placeholder="Contoh: 10" min="0" required>
+                        </div>
+                    </div>
+
+                    <div class="glow-line mt-4"></div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            🔍 PREDIKSI ENGAGEMENT LEVEL
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
