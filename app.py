@@ -4,10 +4,15 @@ import numpy as np
 
 app = Flask(__name__)
 
-# Load model dan scaler
-model = joblib.load('model/knn_model.pkl')
-scaler = joblib.load('model/scaler.pkl')
-le_dict = joblib.load('model/label_encoders.pkl')
+import os
+
+# Get the base directory of the project
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Load model dan scaler dengan path absolut relative ke BASE_DIR
+model = joblib.load(os.path.join(BASE_DIR, 'model', 'knn_model.pkl'))
+scaler = joblib.load(os.path.join(BASE_DIR, 'model', 'scaler.pkl'))
+le_dict = joblib.load(os.path.join(BASE_DIR, 'model', 'label_encoders.pkl'))
 
 # Mapping hasil prediksi
 engagement_map = {0: 'High', 1: 'Low', 2: 'Medium'}
